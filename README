@@ -1,0 +1,26 @@
+First of all GREAT THANKS to Jocelyn Delalande for his work, it really helps!
+AirOS 5.5.2(tested)
+
+Requid packages:
+
+  python2.7
+  python-paramiko (let python create SSH tunnel)
+  cacti 0.8.7i(tested) 
+
+Installation Guide
+
+Place /scripts/scgrab directory with its all subfolders into your "cacti_directory"/scripts/
+Set permissions for /log and /cache to make it accessible to write
+Go Cacti > console > import templates > import ubnt template from template directory 
+Edit /auth/monitor-keypass.txt file to set your credentials you use with SSH connect
+In our case we dont use any RSA or DSA keys so remove from
+Cacti > console > Data Input Methods > select input method for graph you'd like to use > remove from Input String --authkey and --authkeydsa lines
+
+Troubleshooting
+
+This script logs are in /log directory. Common problems are written there
+If there is no graphs you should go
+Cacti > console > devices > select your device > graph list > select graphic which does not work > Turn on Graph Debug ON
+See wether RRDtool says ERROR: the RRD does not contain an RRA matching the chosen CF go
+Cacti > console > Graph Teplates > ubnt graph template > choose for the parameter AVERAGE instead of LAST
+

@@ -88,11 +88,9 @@ class plugin_UBNT_MCAStatus:
             elif query == "wlanAirmaxCustom":
                 ret, wlanPollingQuality = utils.mcastatus_get_param(data, "wlanPollingQuality")
                 ret, wlanPollingCapacity = utils.mcastatus_get_param(data, "wlanPollingCapacity")
-                ret, wlanPollingPriority = utils.mcastatus_get_param(data, "wlanPollingPriority")
-                
+                          
                 value =  "amQuality:" + wlanPollingQuality + ' ' + \
-                            "amCapacity:" + wlanPollingCapacity + ' ' + \
-                            "amPriority:" + wlanPollingPriority
+                            "amCapacity:" + wlanPollingCapacity
                 found = True
             elif query == "lanSpeedCustom":
                 ret, lanSpeedVal = utils.mcastatus_get_param(data, "lanSpeed")
@@ -237,7 +235,7 @@ class plugin_UBNT_RAM:
     shortname = str("ubnt-ram")
     name = str("UBNT RAM")
     command = str("cat /proc/meminfo")
-    enabled = False
+    enabled = True
     
     def dataPack(self, data):
         if config.debug:
